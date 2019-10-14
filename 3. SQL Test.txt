@@ -1,0 +1,34 @@
+============================================
+Result table doesn't exist
+============================================
+
+CREATE TABLE ResultTable AS
+SELECT 	Po."InternalNumber",
+		concat(Em."Name", ' ', Em."Surname") as NameSurname,
+		Po."Position",
+		Em."SalaryYear"/12 as SalaryMonth,
+		Tx."Taxes" as Tax,	
+		Tx."Month"
+FROM "Employees" as Em
+	INNER JOIN "Positions" as Po
+		ON Em."ID" = Po."EmployeeID"
+	INNER JOIN "Taxes" as Tx
+		ON Em."ID" = Tx."EmployeeID"
+
+============================================
+Result table already exist
+============================================
+
+INSERT INTO "ResultTable" 
+SELECT 	Po."InternalNumber",
+		concat(Em."Name", ' ', Em."Surname") as NameSurname,
+		Po."Position",
+		Em."SalaryYear"/12 as SalaryMonth,
+		Tx."Taxes" as Tax,	
+		Tx."Month"
+FROM "Employees" as Em
+	INNER JOIN "Positions" as Po
+		ON Em."ID" = Po."EmployeeID"
+	INNER JOIN "Taxes" as Tx
+		ON Em."ID" = Tx."EmployeeID"
+

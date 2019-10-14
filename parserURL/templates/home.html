@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Тестовое задание{% endblock %}
+{% block content %}
+    <textarea rows="80" cols="90" name="first" readonly="True">
+        {% for task in task_list %}
+ дата {{ task.start_time|date:"d.m.Y h:m:s"}}: {{ task.url }} - {{ task.report }}
+        {% endfor %}
+    </textarea>
+
+    <textarea rows="80" cols="90" name="second" readonly="True">
+        {% for result in results_list %}
+ {{ result.url }} {% if result.title or result.code or result.header %}-{% endif %}
+            {% if result.title %}Title: {{ result.title }}{% endif %}
+            {% if result.code %}Encode: {{ result.code }} {% endif %}
+            {% if result.header %}Header: {{ result.header }}{% endif %}
+        {% endfor %}
+    </textarea>
+{% endblock %}
