@@ -14,8 +14,8 @@ class Task(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     code = models.CharField(max_length=100, verbose_name='Кодировка')
     header = models.CharField(max_length=100, blank=True, verbose_name='H1')
-    report = models.CharField(max_length=100, default='', verbose_name='Отчет о выполнении')
-    is_done = models.BooleanField(default=False, verbose_name='Выполнено')
+    report = models.CharField(max_length=100, verbose_name='Отчет о выполнении')
+    is_done = models.BooleanField(verbose_name='Выполнено')
 
     def save(self):
         self.start_time = datetime.now(timezone.utc) \
