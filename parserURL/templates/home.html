@@ -8,11 +8,11 @@
     </textarea>
 
     <textarea rows="80" cols="90" name="second" readonly="True">
-        {% for result in results_list %}
- {{ result.url }} {% if result.title or result.code or result.header %}-{% endif %}
-            {% if result.title %}Title: {{ result.title }}{% endif %}
-            {% if result.code %}Encode: {{ result.code }} {% endif %}
-            {% if result.header %}Header: {{ result.header }}{% endif %}
+        {% for task in task_list %}
+ {{ task.url }} {% if task.title or task.code or task.header %}-{% endif %}
+            {% if task.title %}Title: {{ task.title }}{% endif %}
+            {% if task.code %}Encode: {{ task.code }} {% endif %}
+            {% if task.header %}Header: {{ task.header }}{% endif %}
         {% endfor %}
     </textarea>
 {% endblock %}
