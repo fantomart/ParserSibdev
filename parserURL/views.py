@@ -8,4 +8,3 @@ def home(request):
         'home.html',
         context={'task_list':Task.objects.filter(is_done=True)},
     )
-

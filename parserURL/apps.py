@@ -1,7 +1,6 @@
-from django.apps import AppConfig
-from datetime import datetime, timezone
 import sys
-
+from datetime import datetime, timezone
+from django.apps import AppConfig
 
 class ParserurlConfig(AppConfig):
     name = 'parserURL'
@@ -18,5 +17,3 @@ class ParserurlConfig(AppConfig):
             start_time = task.start_time - datetime.now(timezone.utc)
             delay = start_time.total_seconds()
             delay_task(task, delay)
-
-

@@ -1,6 +1,6 @@
-from django.db import models
 import uuid
 from datetime import datetime, timedelta, timezone
+from django.db import models
 import requests
 from lxml import html
 from .utils import delay_task
@@ -18,7 +18,8 @@ class Task(models.Model):
     is_done = models.BooleanField(default=False, verbose_name='Выполнено')
 
     def save(self):
-        self.start_time = datetime.now(timezone.utc) + timedelta(minutes=self.minutes,seconds=self.seconds)
+        self.start_time = datetime.now(timezone.utc) \
+                          + timedelta(minutes=self.minutes, seconds=self.seconds)
         self.is_done = False
         self.report = ''
         self.title = ''
@@ -48,7 +49,7 @@ class Task(models.Model):
 
                 result['title'] = titles[0].strip() if titles else ''
                 result['code'] = encodes[0].strip() if encodes else response.encoding
-                result['header'] = ' /// '.join(map(lambda x:x.strip(), headers))
+                result['header'] = ' /// '.join(map(lambda x: x.strip(), headers))
 
                 result['report'] = 'ОК({})'.format(response.status_code)
             else:
